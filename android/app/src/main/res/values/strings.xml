@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RITME</string>
+    <string name="title_activity_main">RITME</string>
+    <string name="package_name">com.ritme.app</string>
+    <string name="custom_url_scheme">com.ritme.app</string>
+</resources>

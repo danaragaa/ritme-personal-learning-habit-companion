@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+
+# Production web build outputs
+dist/
+dist-ssr/
+
+# Environment variables (keep example template only)
+.env
+.env.*
+!.env.example
+*.local
+
+# Android local config, caches, build outputs & binaries
+android/local.properties
+android/.gradle/
+android/.idea/
+android/.kotlin/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/app/src/main/res/xml/config.xml
+*.apk
+*.aab
+*.aar
+*.ap_
+*.dex
+
+# Android signing keys & service credentials
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+keystore.properties
+google-services.json
+
+# Local databases, personal exports, backups & logs
+*.db
+*.sqlite
+*.sqlite3
+ritme-backup*.json
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.bak
+*.tmp
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local AI coding-agent state
+.gemini/
+.claude/
+.cursor/
+.agent/
+
+# Raw brand asset package & internal pre-v3.1.0 drafts/reports (kept locally only)
+brand_assets/
+IMPLEMENTATION_STATUS.md
+PRD.md
+PRD RITME Minimal UX Design.md
+RITME_PRD_2.0_Draft.md
+RITME_PRD_3.0_Draft.md
+QA_CHECKLIST_3.0.md
+QA_TEST_PLAN.md
+UI_UX_DESIGN_SPEC.md
+TASK_10_BRAND_INTEGRATION_REPORT.md

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id" class="ion-palette-dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>RITME — Personal Learning & Habit Companion</title>
+    <base href="/" />
+    <meta name="color-scheme" content="dark light" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="theme-color" content="#101114" />
+    <script>
+      (function () {
+        try {
+          var cached =
+            localStorage.getItem('ritme_theme_cache') ||
+            localStorage.getItem('CapacitorStorage.ritme_theme');
+          if (cached === 'light') {
+            var root = document.documentElement;
+            root.classList.add('theme-light');
+            root.classList.remove('ion-palette-dark');
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#F2F2F7');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

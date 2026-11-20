@@ -1,0 +1,1371 @@
+/* ==========================================================================
+   RITME Design System — Neutral Apple-Inspired Liquid Glass (TASK 02.2-R1)
+   Dark Theme Default: Neutral Charcoal (#101114 / #191A1E + Monochrome Glass)
+   Light Theme: Neutral Frosted Silver (#F2F2F7 / #EAEAEE + High-Clarity Glass)
+   ========================================================================== */
+
+:root {
+  /* Layer A — Neutral Monochrome Background & Soft Tonal Luminance (Dark) */
+  --ritme-bg-primary: #101114;
+  --ritme-bg-secondary: #191A1E;
+  --ritme-canvas: var(--ritme-bg-primary);
+  --ritme-surface: #191A1E;
+  --ritme-surface-elevated: #23242A;
+  --ritme-border: rgba(255, 255, 255, 0.22);
+
+  /* Text Hierarchy (Dark) */
+  --ritme-text-primary: #F5F5F7;
+  --ritme-text-secondary: #A1A1AA;
+  --ritme-text-muted: #73737C;
+
+  /* Monochrome Neutral Tonal Canvas (Zero Colored Radial Gradients) */
+  --ritme-ambient-bg:
+    radial-gradient(ellipse 85% 55% at 15% 8%, rgba(255, 255, 255, 0.065) 0%, transparent 60%),
+    radial-gradient(ellipse 75% 60% at 88% 28%, rgba(255, 255, 255, 0.04) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 65% at 50% 88%, rgba(255, 255, 255, 0.045) 0%, transparent 62%),
+    linear-gradient(180deg, #101114 0%, #191A1E 54%, #101114 100%);
+
+  /* Layer B — Neutral Translucent Glass Material & Solid Fallback (Dark) */
+  --ritme-surface-solid-fallback: #1C1D22;
+  --ritme-glass-surface: rgba(255, 255, 255, 0.10);
+  --ritme-glass-surface-strong: rgba(255, 255, 255, 0.15);
+  --ritme-glass-surface-elevated: var(--ritme-glass-surface-strong);
+  --ritme-glass-hero-surface: var(--ritme-glass-surface);
+  --ritme-glass-border: rgba(255, 255, 255, 0.22);
+  --ritme-glass-highlight: rgba(255, 255, 255, 0.30);
+  --ritme-glass-inset: inset 0 1px 0 var(--ritme-glass-highlight);
+  --ritme-glass-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.68);
+
+  /* Layer C — Functional Glass Controls, Compact Floating Appbar, Capsule Bar & Modals (Dark) */
+  --ritme-appbar-height: 48px;
+  --ritme-appbar-radius: 18px;
+  --ritme-appbar-margin-x: 12px;
+  --ritme-toolbar-height: var(--ritme-appbar-height);
+  --ritme-toolbar-solid-fallback: #1A1B20;
+  --ritme-toolbar-glass-bg: rgba(255, 255, 255, 0.10);
+  --ritme-toolbar-border: rgba(255, 255, 255, 0.20);
+  --ritme-toolbar-reflection: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  --ritme-toolbar-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.72);
+  --ritme-blur-toolbar: 20px;
+  --ritme-nav-glass-bg: rgba(255, 255, 255, 0.11);
+  --ritme-nav-glass-border: rgba(255, 255, 255, 0.22);
+  --ritme-nav-glass-shadow: 0 16px 38px -10px rgba(0, 0, 0, 0.76);
+  --ritme-modal-glass-bg: rgba(25, 26, 30, 0.92);
+  --ritme-blur-card: 22px;
+  --ritme-blur-nav: 26px;
+  --ritme-blur-modal: 24px;
+  --ritme-glass-saturate: 145%;
+
+  /* Centralized Input, Ring & Control Surface Tokens (Dark) */
+  --ritme-input-bg: rgba(255, 255, 255, 0.06);
+  --ritme-input-border: rgba(255, 255, 255, 0.18);
+  --ritme-input-border-focus: rgba(245, 245, 247, 0.64);
+  --ritme-ring-track: rgba(255, 255, 255, 0.14);
+
+  /* Typography Hierarchy Tokens */
+  --ritme-font-title: 1.24rem;
+  --ritme-font-section: 0.96rem;
+  --ritme-font-card: 0.9rem;
+  --ritme-font-body: 0.86rem;
+  --ritme-font-sub: 0.8rem;
+  --ritme-font-caption: 0.72rem;
+  --ritme-font-btn: 0.84rem;
+
+  /* Monochrome Button & Interaction Tokens (Dark) */
+  --ritme-btn-primary-bg: rgba(245, 245, 247, 0.90);
+  --ritme-btn-primary-text: #101114;
+  --ritme-btn-primary-border: rgba(255, 255, 255, 0.95);
+  --ritme-btn-primary-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.65);
+
+  --ritme-state-hover: rgba(255, 255, 255, 0.14);
+  --ritme-state-active: rgba(255, 255, 255, 0.20);
+  --ritme-state-selected-bg: rgba(255, 255, 255, 0.20);
+  --ritme-state-selected-border: rgba(255, 255, 255, 0.34);
+
+  /* Spacing, Radius & Motion System */
+  --ritme-space-xs: 4px;
+  --ritme-space-sm: 8px;
+  --ritme-space-md: 12px;
+  --ritme-space-lg: 16px;
+  --ritme-space-xl: 24px;
+  --ritme-radius-sm: 12px;
+  --ritme-radius-md: 16px;
+  --ritme-radius-lg: 20px;
+  --ritme-radius-pill: 999px;
+  --ritme-touch-min: 44px;
+  --ritme-motion-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --ritme-motion-smooth: 240ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Muted Semantic Status Tokens (Strictly for functional state alerts & energy dots) */
+  --ritme-success: #7DA88E;
+  --ritme-warning: #BFA878;
+  --ritme-danger: #CF7E84;
+  --ritme-energy-green: #69A886;
+  --ritme-energy-yellow: #C9A962;
+  --ritme-energy-red: #C9737A;
+  --ritme-success-soft: rgba(125, 168, 142, 0.14);
+  --ritme-success-border: rgba(125, 168, 142, 0.28);
+  --ritme-warning-soft: rgba(191, 168, 120, 0.14);
+  --ritme-warning-border: rgba(191, 168, 120, 0.28);
+  --ritme-danger-soft: rgba(207, 126, 132, 0.14);
+  --ritme-danger-border: rgba(207, 126, 132, 0.38);
+
+  /* Monochrome Compatibility Aliases (Prevents Aurora leakage into unedited pages) */
+  --ritme-bg-elevated: var(--ritme-surface-elevated);
+  --ritme-bg-card: var(--ritme-glass-surface);
+  --ritme-border-line: var(--ritme-glass-border);
+  --ritme-surface-subtle: rgba(255, 255, 255, 0.06);
+  --ritme-border-highlight: var(--ritme-glass-highlight);
+  --ritme-accent-primary: #F5F5F7;
+  --ritme-accent-secondary: #D4D4D8;
+  --ritme-gold: #E4E4E7;
+  --ritme-accent-soft: rgba(255, 255, 255, 0.12);
+  --ritme-cyan-soft: rgba(255, 255, 255, 0.10);
+  --ritme-gold-soft: rgba(255, 255, 255, 0.12);
+  --ritme-gold-border: rgba(255, 255, 255, 0.24);
+  --ritme-hero-gradient: var(--ritme-glass-surface);
+  --ritme-cta-gradient: var(--ritme-btn-primary-bg);
+  --ritme-progress-gradient: #F5F5F7;
+  --ritme-gold-gradient: #E4E4E7;
+  --ritme-card-shadow: var(--ritme-glass-shadow);
+
+  /* Typography */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Ionic Framework Neutral Monochrome Mappings (Dark) */
+  --ion-background-color: #101114;
+  --ion-background-color-rgb: 16, 17, 20;
+  --ion-text-color: #F5F5F7;
+  --ion-text-color-rgb: 245, 245, 247;
+
+  --ion-color-primary: #F5F5F7;
+  --ion-color-primary-rgb: 245, 245, 247;
+  --ion-color-primary-contrast: #101114;
+  --ion-color-primary-contrast-rgb: 16, 17, 20;
+  --ion-color-primary-shade: #E4E4E7;
+  --ion-color-primary-tint: #FFFFFF;
+
+  --ion-color-secondary: #A1A1AA;
+  --ion-color-secondary-rgb: 161, 161, 170;
+  --ion-color-secondary-contrast: #101114;
+  --ion-color-secondary-contrast-rgb: 16, 17, 20;
+  --ion-color-secondary-shade: #8E8E96;
+  --ion-color-secondary-tint: #B4B4BC;
+
+  --ion-color-success: #7DA88E;
+  --ion-color-success-rgb: 125, 168, 142;
+  --ion-color-success-contrast: #101114;
+  --ion-color-success-contrast-rgb: 16, 17, 20;
+  --ion-color-success-shade: #6e947d;
+  --ion-color-success-tint: #8ab199;
+
+  --ion-color-warning: #BFA878;
+  --ion-color-warning-rgb: 191, 168, 120;
+  --ion-color-warning-contrast: #101114;
+  --ion-color-warning-contrast-rgb: 16, 17, 20;
+  --ion-color-warning-shade: #a8946a;
+  --ion-color-warning-tint: #c5b186;
+
+  --ion-color-danger: #CF7E84;
+  --ion-color-danger-rgb: 207, 126, 132;
+  --ion-color-danger-contrast: #101114;
+  --ion-color-danger-contrast-rgb: 16, 17, 20;
+  --ion-color-danger-shade: #b66f74;
+  --ion-color-danger-tint: #d48b90;
+
+  --ion-card-background: #191A1E;
+  --ion-item-background: #191A1E;
+  --ion-toolbar-background: var(--ritme-toolbar-glass-bg);
+  --ion-tab-bar-background: var(--ritme-nav-glass-bg);
+  --ion-tab-bar-color: #A1A1AA;
+  --ion-tab-bar-color-selected: #F5F5F7;
+  --ion-border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Light Theme: Neutral Apple-Inspired Frosted Glass */
+:root.theme-light {
+  --ritme-bg-primary: #F2F2F7;
+  --ritme-bg-secondary: #EAEAEE;
+  --ritme-canvas: var(--ritme-bg-primary);
+  --ritme-surface: #FFFFFF;
+  --ritme-surface-elevated: #EAEAEE;
+  --ritme-border: rgba(255, 255, 255, 0.80);
+
+  --ritme-text-primary: #1C1C1E;
+  --ritme-text-secondary: #636366;
+  --ritme-text-muted: #8E8E93;
+
+  --ritme-ambient-bg:
+    radial-gradient(ellipse 80% 50% at 16% 10%, rgba(255, 255, 255, 0.90) 0%, transparent 58%),
+    radial-gradient(ellipse 75% 55% at 88% 24%, rgba(142, 142, 147, 0.16) 0%, transparent 56%),
+    radial-gradient(ellipse 85% 60% at 24% 84%, rgba(142, 142, 147, 0.14) 0%, transparent 58%),
+    linear-gradient(180deg, #F2F2F7 0%, #EAEAEE 54%, #F2F2F7 100%);
+
+  --ritme-surface-solid-fallback: #FFFFFF;
+  --ritme-glass-surface: rgba(255, 255, 255, 0.58);
+  --ritme-glass-surface-strong: rgba(255, 255, 255, 0.76);
+  --ritme-glass-surface-elevated: var(--ritme-glass-surface-strong);
+  --ritme-glass-hero-surface: var(--ritme-glass-surface);
+  --ritme-glass-border: rgba(255, 255, 255, 0.80);
+  --ritme-glass-highlight: rgba(255, 255, 255, 0.95);
+  --ritme-glass-inset: inset 0 1px 0 var(--ritme-glass-highlight);
+  --ritme-glass-shadow: 0 10px 28px -12px rgba(28, 28, 30, 0.12), 0 1px 3px rgba(28, 28, 30, 0.05);
+
+  --ritme-toolbar-solid-fallback: #FFFFFF;
+  --ritme-toolbar-glass-bg: rgba(255, 255, 255, 0.72);
+  --ritme-toolbar-border: rgba(255, 255, 255, 0.88);
+  --ritme-toolbar-reflection: inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  --ritme-toolbar-shadow: 0 10px 26px -12px rgba(28, 28, 30, 0.14), 0 1px 3px rgba(28, 28, 30, 0.06);
+  --ritme-nav-glass-bg: rgba(255, 255, 255, 0.66);
+  --ritme-nav-glass-border: rgba(255, 255, 255, 0.86);
+  --ritme-nav-glass-shadow: 0 14px 32px -10px rgba(28, 28, 30, 0.16), 0 1px 4px rgba(28, 28, 30, 0.06);
+  --ritme-modal-glass-bg: rgba(242, 242, 247, 0.94);
+
+  --ritme-input-bg: rgba(255, 255, 255, 0.72);
+  --ritme-input-border: rgba(28, 28, 30, 0.13);
+  --ritme-input-border-focus: rgba(28, 28, 30, 0.46);
+  --ritme-ring-track: rgba(28, 28, 30, 0.10);
+
+  --ritme-btn-primary-bg: rgba(28, 28, 30, 0.90);
+  --ritme-btn-primary-text: #F5F5F7;
+  --ritme-btn-primary-border: rgba(28, 28, 30, 0.20);
+  --ritme-btn-primary-shadow: 0 10px 24px -10px rgba(28, 28, 30, 0.34);
+
+  --ritme-state-hover: rgba(255, 255, 255, 0.72);
+  --ritme-state-active: rgba(255, 255, 255, 0.88);
+  --ritme-state-selected-bg: rgba(255, 255, 255, 0.92);
+  --ritme-state-selected-border: rgba(255, 255, 255, 0.98);
+
+  --ritme-success: #3E7A56;
+  --ritme-warning: #8C6D32;
+  --ritme-danger: #9E424A;
+  --ritme-energy-green: #468A62;
+  --ritme-energy-yellow: #9E7C34;
+  --ritme-energy-red: #B04C54;
+  --ritme-success-soft: rgba(62, 122, 86, 0.10);
+  --ritme-success-border: rgba(62, 122, 86, 0.24);
+  --ritme-warning-soft: rgba(140, 109, 50, 0.10);
+  --ritme-warning-border: rgba(140, 109, 50, 0.24);
+  --ritme-danger-soft: rgba(158, 66, 74, 0.10);
+  --ritme-danger-border: rgba(158, 66, 74, 0.30);
+
+  --ritme-bg-elevated: var(--ritme-surface-elevated);
+  --ritme-bg-card: var(--ritme-glass-surface);
+  --ritme-border-line: rgba(28, 28, 30, 0.08);
+  --ritme-surface-subtle: rgba(255, 255, 255, 0.42);
+  --ritme-border-highlight: var(--ritme-glass-highlight);
+  --ritme-accent-primary: #1C1C1E;
+  --ritme-accent-secondary: #3A3A3C;
+  --ritme-gold: #2C2C2E;
+  --ritme-accent-soft: rgba(28, 28, 30, 0.08);
+  --ritme-cyan-soft: rgba(28, 28, 30, 0.06);
+  --ritme-gold-soft: rgba(28, 28, 30, 0.07);
+  --ritme-gold-border: rgba(28, 28, 30, 0.14);
+  --ritme-hero-gradient: var(--ritme-glass-surface);
+  --ritme-cta-gradient: var(--ritme-btn-primary-bg);
+  --ritme-progress-gradient: #1C1C1E;
+  --ritme-gold-gradient: #3A3A3C;
+  --ritme-card-shadow: var(--ritme-glass-shadow);
+
+  --ion-background-color: #F2F2F7;
+  --ion-background-color-rgb: 242, 242, 247;
+  --ion-text-color: #1C1C1E;
+  --ion-text-color-rgb: 28, 28, 30;
+
+  --ion-color-primary: #1C1C1E;
+  --ion-color-primary-rgb: 28, 28, 30;
+  --ion-color-primary-contrast: #FFFFFF;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #141416;
+  --ion-color-primary-tint: #3A3A3C;
+
+  --ion-color-secondary: #636366;
+  --ion-color-secondary-rgb: 99, 99, 102;
+  --ion-color-secondary-contrast: #FFFFFF;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #48484A;
+  --ion-color-secondary-tint: #8E8E93;
+
+  --ion-card-background: #FFFFFF;
+  --ion-item-background: #FFFFFF;
+  --ion-toolbar-background: var(--ritme-toolbar-glass-bg);
+  --ion-tab-bar-background: var(--ritme-nav-glass-bg);
+  --ion-tab-bar-color: #636366;
+  --ion-tab-bar-color-selected: #1C1C1E;
+  --ion-border-color: rgba(28, 28, 30, 0.08);
+}
+
+/* Motion System (120-240ms clean responsive feedback) */
+@keyframes ritmePageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  background-color: var(--ritme-bg-primary);
+  color: var(--ritme-text-primary);
+  font-family: var(--ion-font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layer A: Monochrome Neutral Canvas */
+.ritme-app-canvas {
+  background: var(--ritme-ambient-bg);
+}
+
+.ritme-app-canvas ion-content {
+  --background: transparent;
+}
+
+/* Layer C: Compact Floating Neutral Liquid Glass Appbar (TASK 09-R1) */
+.ritme-app-canvas ion-header.header-md {
+  background: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.ritme-app-canvas ion-header.ritme-floating-header {
+  padding: calc(var(--ion-safe-area-top, 0px) + 8px) var(--ritme-appbar-margin-x) 4px;
+  background: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  z-index: 20;
+}
+
+/* Single safe-area-top on header wrapper -> never double-pad inside floating capsule */
+.ritme-app-canvas ion-header.ritme-floating-header ion-toolbar:first-of-type {
+  padding-top: 0;
+}
+
+.ritme-app-canvas ion-header.ritme-floating-header ion-toolbar {
+  max-width: 516px;
+  margin: 0 auto;
+  border-radius: var(--ritme-appbar-radius);
+  overflow: hidden;
+  border: 1px solid var(--ritme-toolbar-border);
+  box-shadow: var(--ritme-toolbar-shadow), var(--ritme-toolbar-reflection);
+  --min-height: var(--ritme-appbar-height);
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 16px;
+  --padding-end: 12px;
+  --background: var(--ritme-toolbar-solid-fallback);
+  --color: var(--ritme-text-primary);
+  --border-width: 0;
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ritme-app-canvas ion-header.ritme-floating-header ion-toolbar {
+    --background: var(--ritme-toolbar-glass-bg);
+    backdrop-filter: blur(var(--ritme-blur-toolbar)) saturate(var(--ritme-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--ritme-blur-toolbar)) saturate(var(--ritme-glass-saturate));
+  }
+}
+
+.ritme-app-canvas ion-header.ritme-floating-header ion-toolbar.ritme-toolbar-has-back {
+  --padding-start: 4px;
+}
+
+.ritme-app-canvas ion-header.ritme-floating-header ion-toolbar ion-buttons[slot="start"] {
+  margin-inline-start: 0;
+  margin-inline-end: 2px;
+}
+
+.ritme-app-canvas ion-header.ritme-floating-header ion-toolbar ion-buttons[slot="end"] {
+  margin-inline-end: -4px;
+}
+
+.ritme-app-canvas ion-header ion-toolbar ion-title {
+  padding-inline-start: 0;
+  padding-inline-end: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--ritme-text-primary);
+}
+
+.ritme-app-canvas ion-header ion-toolbar ion-button,
+.ritme-app-canvas ion-header ion-toolbar ion-back-button {
+  --color: var(--ritme-text-primary);
+  color: var(--ritme-text-primary);
+}
+
+.ritme-app-canvas ion-header ion-toolbar ion-back-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  --min-width: 44px;
+  --min-height: 44px;
+  --icon-font-size: 20px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 50%;
+}
+
+/* Home & Onboarding Architectural Typographic Wordmark (Text-Only, Zero Logo/Decoration) */
+.ritme-wordmark-title {
+  padding-inline-start: 0;
+}
+
+.ritme-wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ritme-text-primary);
+}
+
+/* Home Floating Appbar Official Horizontal Brand Logo (Flat Monochrome SVG)
+   Source SVG viewBox is 760x180 (optical artwork spans y:26.6..153.4, x:27.4..469.7).
+   At height: 40px -> optical Paced Ring ~28px, wordmark cap-height ~12.6px, visible width ~98px
+   inside the 48px Floating Glass Appbar with zero distortion and zero source modification. */
+.ritme-appbar-brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  margin-left: -4px;
+  object-fit: contain;
+  object-position: left center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Home Settings Floating Glass Icon Control (44x44 Touch Target + Perfect 34x34 Circle) */
+.ritme-app-canvas ion-header ion-toolbar ion-buttons ion-button.ritme-appbar-icon-btn,
+.ritme-appbar-icon-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --border-radius: 50%;
+  --background: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --ripple-color: transparent;
+}
+
+.ritme-appbar-icon-btn::part(native) {
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ritme-appbar-icon-pill {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  max-width: 34px;
+  max-height: 34px;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 34px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ritme-surface-subtle);
+  border: 1px solid var(--ritme-border-line);
+  box-shadow: var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+  transition:
+    background-color var(--ritme-motion-fast),
+    border-color var(--ritme-motion-fast),
+    transform var(--ritme-motion-fast);
+}
+
+.ritme-appbar-icon-pill ion-icon {
+  font-size: 20px;
+}
+
+.ritme-appbar-icon-btn:hover .ritme-appbar-icon-pill {
+  background: var(--ritme-state-hover);
+  border-color: var(--ritme-glass-border);
+}
+
+.ritme-appbar-icon-btn:active .ritme-appbar-icon-pill {
+  background: var(--ritme-state-active);
+  transform: scale(0.93);
+}
+
+/* Contextual Text+Icon Action in Floating Secondary Appbar (e.g. Focus History) */
+.ritme-appbar-action-btn {
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --ripple-color: transparent;
+  text-transform: none;
+}
+
+.ritme-appbar-action-pill {
+  height: 32px;
+  padding: 0 11px;
+  border-radius: var(--ritme-radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--ritme-surface-subtle);
+  border: 1px solid var(--ritme-border-line);
+  box-shadow: var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--ritme-motion-fast),
+    border-color var(--ritme-motion-fast),
+    transform var(--ritme-motion-fast);
+}
+
+.ritme-appbar-action-pill ion-icon {
+  font-size: 18px;
+}
+
+.ritme-appbar-action-btn:hover .ritme-appbar-action-pill {
+  background: var(--ritme-state-hover);
+  border-color: var(--ritme-glass-border);
+}
+
+.ritme-appbar-action-btn:active .ritme-appbar-action-pill {
+  background: var(--ritme-state-active);
+  transform: scale(0.95);
+}
+
+.ritme-page-container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: var(--ritme-space-md) var(--ritme-space-lg) calc(28px + env(safe-area-inset-bottom, 0px));
+  animation: ritmePageEnter 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Concise Supporting Header Row Beneath Floating Contextual Appbar (No Duplicate H1) */
+.ritme-page-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 2px var(--ritme-space-md);
+}
+
+.ritme-page-intro-desc {
+  margin: 0;
+  font-size: var(--ritme-font-sub);
+  line-height: 1.4;
+  color: var(--ritme-text-secondary);
+  min-width: 0;
+  flex: 1;
+}
+
+/* Safe Bottom Clearance for Floating Capsule Glass Bar inside ion-tabs */
+ion-tabs .ritme-page-container {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Layer B: Neutral Translucent Glass Cards (Uniform Material, Selective Blur) */
+.ritme-card {
+  background: var(--ritme-surface-solid-fallback);
+  background: var(--ritme-glass-surface);
+  border: 1px solid var(--ritme-glass-border);
+  border-radius: var(--ritme-radius-lg);
+  padding: var(--ritme-space-lg);
+  margin-bottom: var(--ritme-space-md);
+  color: var(--ritme-text-primary);
+  box-shadow: var(--ritme-glass-shadow), var(--ritme-glass-inset);
+  transition: border-color var(--ritme-motion-fast), background-color var(--ritme-motion-fast), transform var(--ritme-motion-fast);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ritme-card {
+    backdrop-filter: blur(var(--ritme-blur-card)) saturate(var(--ritme-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--ritme-blur-card)) saturate(var(--ritme-glass-saturate));
+  }
+}
+
+/* Consistent Primary Card Material (No distinct color or extra tint) */
+.ritme-hero-card {
+  background: var(--ritme-surface-solid-fallback);
+  background: var(--ritme-glass-hero-surface);
+  border: 1px solid var(--ritme-glass-border);
+}
+
+/* Prevent Nested Blur Inside Modals */
+ion-modal .ritme-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Layer C: Floating Neutral Capsule Navigation (4 Tabs, Paired with Floating Glass Appbar) */
+ion-tab-bar.ritme-glass-tab-bar {
+  position: fixed;
+  left: var(--ritme-appbar-margin-x);
+  right: var(--ritme-appbar-margin-x);
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  max-width: 516px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 58px;
+  min-height: 58px;
+  padding: 3px 5px;
+  border-radius: 26px;
+  background: var(--ritme-surface-solid-fallback);
+  --background: var(--ritme-nav-glass-bg);
+  --border: none;
+  border: 1px solid var(--ritme-nav-glass-border);
+  box-shadow: var(--ritme-nav-glass-shadow), var(--ritme-glass-inset);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  ion-tab-bar.ritme-glass-tab-bar {
+    background: var(--ritme-nav-glass-bg);
+    backdrop-filter: blur(var(--ritme-blur-nav)) saturate(var(--ritme-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--ritme-blur-nav)) saturate(var(--ritme-glass-saturate));
+  }
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button {
+  --background: transparent;
+  --background-focused: transparent;
+  --color: var(--ritme-text-secondary);
+  --color-selected: var(--ritme-text-primary);
+  --padding-top: 2px;
+  --padding-bottom: 2px;
+  min-height: 46px;
+  height: 48px;
+  max-height: 50px;
+  border-radius: 22px;
+  margin: 0 2px;
+  transition: background-color var(--ritme-motion-fast), box-shadow var(--ritme-motion-fast), transform var(--ritme-motion-fast), color var(--ritme-motion-fast);
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button ion-icon {
+  font-size: 20px;
+  margin: 0 0 2px;
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button ion-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button.tab-selected {
+  --background: var(--ritme-state-selected-bg);
+  --color-selected: var(--ritme-text-primary);
+  background: var(--ritme-state-selected-bg);
+  color: var(--ritme-text-primary);
+  box-shadow: inset 0 0 0 1px var(--ritme-state-selected-border), inset 0 1px 0 var(--ritme-glass-highlight);
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button.tab-selected ion-icon,
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button.tab-selected ion-label {
+  color: var(--ritme-text-primary);
+}
+
+:root.theme-light ion-tab-bar.ritme-glass-tab-bar ion-tab-button.tab-selected {
+  box-shadow: 0 2px 10px -2px rgba(28, 28, 30, 0.1), inset 0 0 0 1px var(--ritme-state-selected-border);
+}
+
+ion-tab-bar.ritme-glass-tab-bar ion-tab-button:active {
+  transform: scale(0.95);
+}
+
+/* Layer C: Neutral Glass Modal Sheet Styling */
+ion-modal.ritme-glass-modal {
+  --background: var(--ritme-modal-glass-bg);
+  --border-radius: 24px 24px 0 0;
+  --box-shadow: var(--ritme-nav-glass-shadow);
+}
+
+ion-modal.ritme-glass-modal ion-content {
+  --background: var(--ritme-modal-glass-bg);
+}
+
+ion-modal.ritme-glass-modal ion-header.header-md {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+ion-modal.ritme-glass-modal ion-header ion-toolbar:first-of-type {
+  padding-top: 0;
+}
+
+ion-modal.ritme-glass-modal ion-toolbar {
+  --min-height: var(--ritme-appbar-height);
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 16px;
+  --padding-end: 12px;
+  --background: transparent;
+  --color: var(--ritme-text-primary);
+  --border-width: 0 0 1px 0;
+  --border-style: solid;
+  --border-color: var(--ritme-border-line);
+}
+
+ion-modal.ritme-glass-modal ion-toolbar ion-title {
+  padding-inline-start: 0;
+  padding-inline-end: 8px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ritme-text-primary);
+}
+
+ion-modal.ritme-glass-modal ion-toolbar ion-button {
+  min-height: 44px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  --color: var(--ritme-text-secondary);
+  color: var(--ritme-text-secondary);
+}
+
+/* Neutral Glass Strip (Floating Reminder Banner) */
+.ritme-glass-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: var(--ritme-space-md);
+  border-radius: var(--ritme-radius-md);
+  background: var(--ritme-surface-solid-fallback);
+  background: var(--ritme-glass-surface);
+  border: 1px solid var(--ritme-glass-border);
+  box-shadow: var(--ritme-glass-shadow), var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ritme-glass-strip {
+    backdrop-filter: blur(var(--ritme-blur-card)) saturate(var(--ritme-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--ritme-blur-card)) saturate(var(--ritme-glass-saturate));
+  }
+}
+
+/* Secondary Translucent Glass Pill Button */
+.ritme-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 0 13px;
+  border-radius: var(--ritme-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  border: 1px solid var(--ritme-glass-border);
+  background: var(--ritme-glass-surface-strong);
+  box-shadow: var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+  cursor: pointer;
+  transition: transform var(--ritme-motion-fast), background-color var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-glass-pill:active {
+  opacity: 0.85;
+  transform: scale(0.96);
+  background: var(--ritme-state-active);
+}
+
+.ritme-summary-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ritme-space-sm);
+}
+
+.ritme-summary-tile {
+  background: var(--ritme-surface-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--ritme-radius-md);
+  padding: 10px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:root.theme-light .ritme-summary-tile {
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.ritme-stat-number {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  color: var(--ritme-text-primary);
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.ritme-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ritme-section-title {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--ritme-text-primary);
+}
+
+.ritme-subtitle {
+  color: var(--ritme-text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+/* Monochrome Frosted Badges & Chips */
+.ritme-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border-radius: var(--ritme-radius-pill);
+  font-size: 0.74rem;
+  line-height: 1.2;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: var(--ritme-glass-surface-strong);
+  border: 1px solid var(--ritme-glass-border);
+  box-shadow: var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+}
+
+.ritme-glass-chip {
+  background: var(--ritme-glass-surface-strong);
+  border: 1px solid var(--ritme-glass-border);
+  box-shadow: var(--ritme-glass-inset);
+  color: var(--ritme-text-primary);
+}
+
+/* Neutralized Badge Aliases for Legacy Pages */
+.ritme-badge-gold,
+.ritme-badge-cyan {
+  background: var(--ritme-glass-surface-strong);
+  color: var(--ritme-text-primary);
+  border: 1px solid var(--ritme-glass-border);
+}
+
+.ritme-badge-success {
+  background: var(--ritme-glass-surface-strong);
+  color: var(--ritme-text-primary);
+  border: 1px solid var(--ritme-glass-border);
+}
+
+/* Neutral Icon Button */
+.ritme-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: var(--ritme-radius-sm);
+  border: 1px solid var(--ritme-glass-border);
+  background: var(--ritme-surface-subtle);
+  color: var(--ritme-text-secondary);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform var(--ritme-motion-fast), background-color var(--ritme-motion-fast), color var(--ritme-motion-fast);
+}
+
+.ritme-icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ritme-icon-btn:active:not(:disabled) {
+  transform: scale(0.92);
+  background: var(--ritme-state-active);
+  color: var(--ritme-text-primary);
+}
+
+/* Neutral Monochrome Progress Bars */
+.ritme-progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--ritme-surface-subtle);
+  border-radius: var(--ritme-radius-pill);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+:root.theme-light .ritme-progress-track {
+  border-color: rgba(28, 28, 30, 0.08);
+}
+
+.ritme-progress-fill {
+  height: 100%;
+  background: var(--ritme-progress-gradient);
+  border-radius: var(--ritme-radius-pill);
+  transition: width 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ritme-progress-fill-gold {
+  background: var(--ritme-gold-gradient);
+}
+
+/* Interactive Checklist Rows (Non-blurred Clean Inner Surfaces) */
+.ritme-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 12px;
+  border-radius: var(--ritme-radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  margin-bottom: 8px;
+  transition: border-color var(--ritme-motion-fast), background-color var(--ritme-motion-fast), opacity var(--ritme-motion-fast), transform var(--ritme-motion-fast);
+}
+
+:root.theme-light .ritme-list-item {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.ritme-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.ritme-list-item:active {
+  opacity: 0.86;
+  transform: scale(0.99);
+}
+
+.ritme-list-item.is-completed {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.10);
+  opacity: 0.72;
+}
+
+:root.theme-light .ritme-list-item.is-completed {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.55);
+  opacity: 0.76;
+}
+
+/* Neutral Monochrome Checkbox Styling */
+.ritme-checkbox {
+  --size: 20px;
+  --border-radius: 7px;
+  --border-width: 1.5px;
+  --border-color: var(--ritme-glass-border);
+  --border-color-checked: var(--ritme-text-primary);
+  --checkbox-background: transparent;
+  --checkbox-background-checked: var(--ritme-text-primary);
+  --checkmark-color: var(--ritme-bg-primary);
+  flex-shrink: 0;
+}
+
+:root.theme-light .ritme-checkbox {
+  --border-color: rgba(28, 28, 30, 0.24);
+  --checkmark-color: #FFFFFF;
+}
+
+/* Primary Action CTA — High-Contrast Neutral Frosted Capsule (Calm Title Case) */
+.ritme-focus-cta {
+  --background: var(--ritme-btn-primary-bg);
+  --background-activated: var(--ritme-btn-primary-bg);
+  --background-focused: var(--ritme-btn-primary-bg);
+  --background-hover: var(--ritme-btn-primary-bg);
+  --color: var(--ritme-btn-primary-text);
+  --border-radius: var(--ritme-radius-pill);
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --box-shadow: var(--ritme-btn-primary-shadow);
+  min-height: 46px;
+  font-size: var(--ritme-font-btn);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  margin: 2px 0 12px;
+  transition: transform var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-focus-cta::part(native) {
+  border: 1px solid var(--ritme-btn-primary-border);
+  box-shadow: var(--ritme-btn-primary-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+:root.theme-light .ritme-focus-cta::part(native) {
+  box-shadow: var(--ritme-btn-primary-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.ritme-focus-cta:active {
+  opacity: 0.88;
+  transform: scale(0.985);
+}
+
+/* Native Primary Pill Button (Matches .ritme-focus-cta Visually) */
+.ritme-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: var(--ritme-radius-pill);
+  background: var(--ritme-btn-primary-bg);
+  color: var(--ritme-btn-primary-text);
+  border: 1px solid var(--ritme-btn-primary-border);
+  box-shadow: var(--ritme-btn-primary-shadow);
+  font-family: var(--ion-font-family);
+  font-size: var(--ritme-font-btn);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-btn-primary:active {
+  opacity: 0.88;
+  transform: scale(0.97);
+}
+
+/* Destructive Semantic Pill Button */
+.ritme-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: var(--ritme-radius-pill);
+  background: var(--ritme-danger-soft);
+  color: var(--ritme-danger);
+  border: 1px solid var(--ritme-danger-border);
+  font-family: var(--ion-font-family);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-btn-danger:active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+/* Secondary Translucent Glass Block/Action Button */
+.ritme-btn-glass-secondary {
+  --background: var(--ritme-glass-surface-strong);
+  --background-activated: var(--ritme-state-active);
+  --background-focused: var(--ritme-state-hover);
+  --color: var(--ritme-text-primary);
+  --border-radius: var(--ritme-radius-pill);
+  --border-color: var(--ritme-glass-border);
+  --border-width: 1px;
+  --border-style: solid;
+  --box-shadow: var(--ritme-glass-inset);
+  min-height: 40px;
+  font-size: var(--ritme-font-btn);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: transform var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-btn-glass-secondary:active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+.ritme-timer-display {
+  font-variant-numeric: tabular-nums;
+  font-size: 3.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ritme-text-primary);
+}
+
+/* Unified Input / Select / Textarea Control Surface */
+.ritme-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: var(--ritme-radius-sm);
+  border: 1px solid var(--ritme-input-border);
+  background: var(--ritme-input-bg);
+  color: var(--ritme-text-primary);
+  font-family: var(--ion-font-family);
+  font-size: 0.88rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color var(--ritme-motion-fast), background-color var(--ritme-motion-fast);
+}
+
+.ritme-input::placeholder {
+  color: var(--ritme-text-muted);
+}
+
+.ritme-input:focus {
+  border-color: var(--ritme-input-border-focus);
+}
+
+.ritme-input.is-error {
+  border-color: var(--ritme-danger-border);
+}
+
+.ritme-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Secondary Outline Pill Helper */
+.ritme-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--ritme-glass-surface-strong);
+  color: var(--ritme-text-primary);
+  border: 1px solid var(--ritme-glass-border);
+  box-shadow: var(--ritme-glass-inset);
+  border-radius: var(--ritme-radius-pill);
+  font-family: var(--ion-font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--ritme-motion-fast), opacity var(--ritme-motion-fast);
+}
+
+.ritme-btn-outline:active {
+  opacity: 0.85;
+  transform: scale(0.96);
+}
+
+/* Vector Icon Alignment, Status Dots & Interactive UI Helpers */
+.ritme-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ritme-icon-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ritme-glass-surface-strong);
+  border: 1px solid var(--ritme-glass-border);
+  color: var(--ritme-text-primary);
+  flex-shrink: 0;
+}
+
+.ritme-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ritme-dot-green {
+  background: var(--ritme-energy-green);
+}
+
+.ritme-dot-yellow {
+  background: var(--ritme-energy-yellow);
+}
+
+.ritme-dot-red {
+  background: var(--ritme-energy-red);
+}
+
+.ritme-dot-primary {
+  background: var(--ritme-text-primary);
+}
+
+.ritme-dot-gold {
+  background: var(--ritme-text-secondary);
+}
+
+.ritme-pill-tab {
+  transition: transform var(--ritme-motion-fast), background-color 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+
+.ritme-pill-tab:active {
+  opacity: 0.85;
+  transform: scale(0.96);
+}
+
+@keyframes ritmeBreathGlow {
+  0%, 100% {
+    opacity: 0.94;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ritme-timer-running {
+  animation: ritmeBreathGlow 3.2s ease-in-out infinite;
+}
+
+/* Interactive Habit Timeline Connector (Preserved for Legacy HabitsPage) */
+.ritme-timeline-wrapper {
+  position: relative;
+}
+
+.ritme-timeline-step {
+  position: relative;
+  padding-left: 14px;
+}
+
+.ritme-timeline-step::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 12px;
+  bottom: -10px;
+  width: 2px;
+  background: var(--ritme-glass-border);
+  border-radius: 2px;
+}
+
+.ritme-timeline-step:last-child::before {
+  display: none;
+}
+
+.ritme-timeline-step::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ritme-surface);
+  border: 2px solid var(--ritme-text-primary);
+}
+
+.ritme-timeline-step.is-done::after {
+  background: var(--ritme-text-primary);
+  border-color: var(--ritme-text-primary);
+}
+
+/* Question Step Navigator Chip (Preserved for Legacy LearningPage) */
+.ritme-step-chip {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 7px;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border: 1px solid var(--ritme-glass-border);
+  background: var(--ritme-bg-elevated);
+  color: var(--ritme-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--ritme-motion-fast), border-color 160ms ease, background-color 160ms ease;
+}
+
+.ritme-step-chip:active {
+  transform: scale(0.94);
+}
+
+/* Horizontal Pill Tab Strip without Raw Browser Scrollbar */
+.ritme-pill-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ritme-pill-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Neutralized Avatar Frames (Preserved for Legacy ProgressPage/RewardsPage Compatibility) */
+.ritme-avatar-core {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.ritme-frame-aurora_violet,
+.ritme-frame-cyan_prism,
+.ritme-frame-solar_gold,
+.ritme-frame-obsidian_master {
+  background: var(--ritme-glass-surface-strong);
+  color: var(--ritme-text-primary);
+  border: 1px solid var(--ritme-glass-border);
+}
+
+/* Respect Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
